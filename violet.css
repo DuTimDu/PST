@@ -1,0 +1,18 @@
+body{
+	background-color:  purple;
+	color: yellow;
+}
+h1{
+	font-family: Arial;
+	text-decoration: underline;
+	font-weight: bold;
+}
+.wiki{
+	font-family: Courier;
+	font-size: 18px;
+	
+}
+.image{
+	font-size: 11px;
+	font-family: Perpetua;
+}
