@@ -2,6 +2,7 @@
 body {
     font-family: Arial, sans-serif;
 }
+
 .container {
     width: 300px;
     padding: 16px;
@@ -10,7 +11,9 @@ body {
     margin-top: 100px;
     border: 1px solid black;
     border-radius: 4px;
+    text-align: center; /* Centrer le contenu à l'intérieur du conteneur */
 }
+
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -19,6 +22,7 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+
 button {
     background-color: #0095ff;
     color: white;
@@ -28,9 +32,11 @@ button {
     cursor: pointer;
     width: 100%;
 }
+
 button:hover {
     opacity: 0.8;
 }
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -48,4 +54,17 @@ th, td {
 
 th {
     background-color: #f2f2f2;
+}
+
+/* Nouveau style pour l'image */
+.container img {
+    margin-bottom: 20px;
+    width: 50%; /* Ajustez la largeur si nécessaire */
+}
+
+/* Style pour le message d'erreur */
+#error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
 }
