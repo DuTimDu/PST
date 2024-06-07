@@ -41,7 +41,7 @@ app.post('/login', (req, res) => {
 });
 
 // Démarrer le serveur
-const PORT = 3000;
+const PORT = 5500;
 app.listen(PORT, () => {
     console.log(`Serveur démarré sur http://localhost:${PORT}`);
 });
