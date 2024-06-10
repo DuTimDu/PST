@@ -1,47 +1,39 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3').verbose();
-const path = require('path');
 
 const app = express();
+const port = 3306;
+
+// Configuration de Body Parser pour analyser les données de la requête
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// Déclaration d'une instance de base de données SQLite
 const db = new sqlite3.Database(':memory:');
 
-// Charger les commandes SQL du fichier data.sql
-const fs = require('fs');
-const sql = fs.readFileSync('data.sql').toString();
-
-// Initialiser la base de données
+// Création de la table des utilisateurs (nom, mot de passe)
 db.serialize(() => {
-    db.exec(sql, (err) => {
-        if (err) {
-            console.error('Erreur lors de l\'initialisation de la base de données:', err);
-        } else {
-            console.log('Base de données initialisée avec succès.');
-        }
-    });
+    db.run("CREATE TABLE IF NOT EXISTS users (username TEXT, password TEXT)");
 });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname)));
-
-// Route pour vérifier les identifiants
+// Route pour gérer les requêtes de connexion
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
+    // Vérification si l'utilisateur existe dans la base de données
     db.get('SELECT * FROM users WHERE username = ? AND password = ?', [username, password], (err, row) => {
         if (err) {
             res.status(500).send('Erreur du serveur');
         } else if (row) {
-            res.send({ success: true, username: row.username });
+            res.send({ success: true, message: 'Connexion réussie' });
         } else {
-            res.send({ success: false });
+            res.send({ success: false, message: 'Identifiants incorrects' });
         }
     });
 });
 
-// Démarrer le serveur
-const PORT = 5500;
-app.listen(PORT, () => {
-    console.log(`Serveur démarré sur http://localhost:${PORT}`);
+// Démarrage du serveur
+app.listen(port, () => {
+    console.log(`Serveur démarré sur http://localhost:${port}`);
 });
