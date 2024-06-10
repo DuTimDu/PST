@@ -1,28 +1,22 @@
 const sqlite3 = require('sqlite3').verbose();
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Empêche le rechargement de la page
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+let db = new sqlite3.Database('data.db');
 
-    // Vérification des identifiants via une requête fetch
-    fetch('/api/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username: username, password: password })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            window.location.href = 'home.html'; // Redirection vers la page d'accueil
-        } else {
-            document.getElementById('error-message').textContent = 'Identifiants incorrects';
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        document.getElementById('error-message').textContent = 'Une erreur est survenue. Veuillez réessayer.';
-    });
+db.serialize(() => {
+    db.run("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, password TEXT)");
+
+    db.run("INSERT INTO users (username, password) VALUES (?, ?)", ['jury1', 'conseil']);
+    db.run("INSERT INTO users (username, password) VALUES (?, ?)", ['jury2', 'remises']);
+    db.run("INSERT INTO users (username, password) VALUES (?, ?)", ['jury3', 'reunion']);
+    db.run("INSERT INTO users (username, password) VALUES (?, ?)", ['jury4', 'jury']);
+    db.run("INSERT INTO users (username, password) VALUES (?, ?)", ['jury5', 'bureau']);
+    db.run("INSERT INTO users (username, password) VALUES (?, ?)", ['jury6', 'bateau']);
+    db.run("INSERT INTO users (username, password) VALUES (?, ?)", ['jury7', 'stand']);
+});
+
+db.close((err) => {
+    if (err) {
+        console.error(err.message);
+    }
+    console.log('Base de données SQLite fermée');
 });
