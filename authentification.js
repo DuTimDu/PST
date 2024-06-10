@@ -3,7 +3,7 @@ const sqlite3 = require('sqlite3').verbose();
 let db = new sqlite3.Database('data.db');
 
 db.serialize(() => {
-    db.run("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, password TEXT)");
+    db.run("CREATE TABLE users (id INTEGER PRIMARY KEY, username TEXT, password TEXT)");
 
     db.run("INSERT INTO users (username, password) VALUES (?, ?)", ['jury1', 'conseil']);
     db.run("INSERT INTO users (username, password) VALUES (?, ?)", ['jury2', 'remises']);
