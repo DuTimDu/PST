@@ -16,7 +16,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 let db = new sqlite3.Database('data.db');
 let db1 = new sqlite3.Database('database.db');
 
-uname= '';
 // Route pour gérer l'authentification
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
@@ -26,7 +25,6 @@ app.post('/login', (req, res) => {
             console.error(err.message);
             res.status(500).send('Erreur interne du serveur');
         } else if (row) {
-            uname = username;
             res.redirect('/home.html'); // Rediriger vers home.html si les identifiants sont corrects
         } else {
             res.status(401).send('Identifiants incorrects'); // Envoyer une réponse d'erreur si les identifiants sont incorrects
@@ -37,7 +35,7 @@ app.post('/login', (req, res) => {
 // Route pour enregistrer les sélections dans la base de données
 app.post('/saveSelections', (req, res) => {
 
-    const { userId= uname, projectId, hour, selected } = req.body;
+    const { userId, projectId, hour, selected } = req.body;
     const selections = req.body.selections;
     // Connexion à la base de données
 
@@ -56,7 +54,16 @@ app.post('/saveSelections', (req, res) => {
     res.redirect('/'); // Redirige vers la page d'accueil
 });
 
-
+app.get('/login', (req, res) => {
+  
+    db1.all('SELECT * FROM selections', [], (err, rows) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+        return;
+      }
+    });
+  
+  });
 // Démarrer le serveur
 app.listen(port, () => {
     console.log(`Serveur en cours d'exécution sur le port ${port}`);
