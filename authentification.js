@@ -50,7 +50,7 @@ app.post('/saveSelections', (req, res) => {
     });
     
     // Ferme la connexion à la base de données
-
+    alert("Vos choix ont été enregistrés avec succès");
     res.redirect('/'); // Redirige vers la page d'accueil
 });
 // Démarrer le serveur
