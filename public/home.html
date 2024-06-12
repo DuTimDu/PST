@@ -7,71 +7,84 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="home-container">
-        <h1 id="welcome-message"></h1>
-        <p>Vous êtes connecté avec succès.</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>heure\N° Projet</th>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                    <td>7</td>
-                    <td>8</td>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    
-                    <td>13h30</td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                </tr>
-                <tr>
-                    <td>14h00</td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                <tr>
-                    <td>14h30</td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-
-                
-            </tbody>
-        </table>
+    <div class="container">
+        <h1>Accueil</h1>
+        <form id="selectionForm" action="/saveSelections" method="POST">
+            <h2>bienvenue id="username"
+            <table>
+                <thead>
+                    <tr>
+                        <th>Heure\N° Projet</th>
+                        <th>Projet 1</th>
+                        <th>Projet 2</th>
+                        <th>Projet 3</th>
+                        <th>Projet 4</th>
+                        <th>Projet 5</th>
+                        <th>Projet 6</th>
+                        <th>Projet 7</th>
+                        <th>Projet 8</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>13h30</td>
+                        <!-- Remplacez le contenu du formulaire par des boucles dynamiques si nécessaire -->
+                        <td><input type="checkbox" name="selections[]" value="projet1"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet2"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet3"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet4"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet5"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet6"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet7"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet8"></td>
+                    </tr>
+                    <tr>
+                        <td>14h00</td>
+                        <td><input type="checkbox" name="selections[]" value="projet1"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet2"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet3"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet4"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet5"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet6"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet7"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet8"></td>
+                    </tr>
+                    <tr>
+                        <td>14h30</td>
+                        <td><input type="checkbox" name="selections[]" value="projet1"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet2"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet3"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet4"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet5"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet6"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet7"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet8"></td>
+                    </tr>
+                    <tr>
+                        <td>15h00</td>
+                        <td><input type="checkbox" name="selections[]" value="projet1"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet2"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet3"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet4"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet5"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet6"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet7"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet8"></td>
+                    </tr>
+                    <tr>
+                        <td>15h30</td>
+                        <td><input type="checkbox" name="selections[]" value="projet1"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet2"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet3"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet4"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet5"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet6"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet7"></td>
+                        <td><input type="checkbox" name="selections[]" value="projet8"></td>
+                </tbody>
+            </table>
+            <button type="submit">Enregistrer les sélections</button>
+        </form>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const username = localStorage.getItem('username');
-            if (username) {
-                document.getElementById('welcome-message').textContent = `Bienvenue, ${username} !`;
-            } else {
-                document.getElementById('welcome-message').textContent = 'Bienvenue !';
-            }
-        });
-    </script>
 </body>
 </html>
