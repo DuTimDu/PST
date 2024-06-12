@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
@@ -8,16 +9,16 @@
 </head>
 <body>
     <div class="login-container">
-        <h2>Login</h2>
+        <h2>Connexion</h2>
         <form id="loginForm" action="/login" method="POST">
             <img src="https://upload.wikimedia.org/wikipedia/fr/7/73/Logo_ESIEA_2020.png"  width=20%><br><br>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required><br><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br><br>
-            <button type="submit">Connexion</button>
+            <label for="username">Nom d'utilisateur:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Se connecter</button>
+            <p id="error-message"></p>
         </form>
-        <div id="error-message"></div>
     </div>
     <script src="authentification.js"></script>
 </body>
