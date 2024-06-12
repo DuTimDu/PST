@@ -43,7 +43,7 @@ app.post('/saveSelections', (req, res) => {
 
     // Insertion de la sélection dans la base de données
     db.serialize(() => {
-        const before = db1.prepare('DElETE FROM selections WHERE userId = ? AND projectId = ?');
+        const before = db1.prepare('DELETE FROM selections');
         const stmt = db1.prepare('INSERT INTO selections (userId, projectId, hour, selected) VALUES (?, ?, ?, ?)');
         selections.forEach(selection => {
             stmt.run(selection);
