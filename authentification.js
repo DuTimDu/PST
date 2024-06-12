@@ -14,6 +14,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Ouvrir la base de données SQLite
 let db = new sqlite3.Database('data.db');
+let db1 = new sqlite3.Database('database.db');
+
 uname= '';
 // Route pour gérer l'authentification
 app.post('/login', (req, res) => {
@@ -34,26 +36,24 @@ app.post('/login', (req, res) => {
 
 // Route pour enregistrer les sélections dans la base de données
 app.post('/saveSelections', (req, res) => {
+
     const { userId= uname, projectId, hour, selected } = req.body;
     const selections = req.body.selections;
     // Connexion à la base de données
-    const db = new sqlite3.Database('database.db');
 
     // Insertion de la sélection dans la base de données
     db.serialize(() => {
-        const stmt = db.prepare('INSERT INTO selections (project) VALUES (?)');
+        const stmt = db1.prepare('INSERT INTO selections (projectId) VALUES (?)');
         selections.forEach(selection => {
             stmt.run(selection);
         });
         stmt.finalize();
     });
-
+    
     // Ferme la connexion à la base de données
-    db.close();
 
     res.redirect('/'); // Redirige vers la page d'accueil
 });
-
 
 
 // Démarrer le serveur
