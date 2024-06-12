@@ -85,5 +85,48 @@
             <button type="submit">Enregistrer les sélections</button>
         </form>
     </div>
+    <script src="authentification.js">
+        // Fonction pour récupérer les données et les afficher dans le tableau
+        async function fetchData() {
+            try {
+                const response = await fetch('/data');
+                const result = await response.json();
+                const data = result.data;
+
+                const tableBody = document.getElementById('table-body');
+                tableBody.innerHTML = '';
+
+                data.forEach(row => {
+                    const tr = document.createElement('tr');
+                    
+                    // Ajout de la première colonne (Heure)
+                    const heureTd = document.createElement('td');
+                    heureTd.textContent = row.heure; // Assurez-vous que la colonne existe dans votre table
+                    tr.appendChild(heureTd);
+
+                    // Ajout des colonnes des projets
+                    for (let i = 1; i <= 8; i++) {
+                        const projetTd = document.createElement('td');
+                        const input = document.createElement('input');
+                        input.type = 'checkbox';
+                        input.name = 'selections[]';
+                        input.value = `projet${i}`;
+                        if (row[`projet${i}`]) { // Si le projet est sélectionné dans la base de données
+                            input.checked = true;
+                        }
+                        projetTd.appendChild(input);
+                        tr.appendChild(projetTd);
+                    }
+
+                    tableBody.appendChild(tr);
+                });
+            } catch (error) {
+                console.error('Erreur lors de la récupération des données:', error);
+            }
+        }
+
+        // Appeler la fonction fetchData lorsque la page se charge
+        window.onload = fetchData;
+    </script>
 </body>
 </html>

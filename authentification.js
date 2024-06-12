@@ -54,16 +54,16 @@ app.post('/saveSelections', (req, res) => {
     res.redirect('/'); // Redirige vers la page d'accueil
 });
 
-app.get('/login', (req, res) => {
+app.get('/data', (req, res) => {
   
     db1.all('SELECT * FROM selections', [], (err, rows) => {
       if (err) {
         res.status(500).json({ error: err.message });
         return;
       }
+      res.json({ data: rows });
     });
-  
-  });
+});
 // Démarrer le serveur
 app.listen(port, () => {
     console.log(`Serveur en cours d'exécution sur le port ${port}`);
