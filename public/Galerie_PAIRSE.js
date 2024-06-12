@@ -2,19 +2,19 @@
 var imgnum = 0;
 var imageliste = [
 	"PAIRSE1.png",
-	"PAIRSE2.jpg",
-	"PAIRSE3.jpg",
-	"PAIRSE4.jpg",
+	"PAIRSE2.png",
+	"PAIRSE3.png",
+	"PAIRSE4.png",
 
-	"PAIRSE5.jpg",
-	"PAIRSE6.jpg",
-	"PAIRSE7.jpg",
-	"PAIRSE8.jpg",
+	"PAIRSE5.png",
+	"PAIRSE6.png",
+	"PAIRSE7.png",
+	"PAIRSE8.png",
 
-	"PAIRSE9.jpg",
-	"PAIRSE10.jpg",
-	"PAIRSE11.jpg",
-	"PAIRSE12.jpg"
+	"PAIRSE9.png",
+	"PAIRSE10.png",
+	"PAIRSE11.png",
+	"PAIRSE12.png"
 ]
 function imagesuiv() {
 	if (imgnum == imageliste.length - 1) {
